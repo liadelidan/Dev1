@@ -4,6 +4,7 @@ import org.junit.Test;
 public class FirstTest {
     @Test
     public void firstTest() {
+        System.out.println("First Test: ");
         BinaryTree tree = new BinaryTree();
         tree.root = new Node(20);
         tree.root.left = new Node(8);
@@ -26,6 +27,23 @@ public class FirstTest {
         t = tree.lca(tree.root, n1, n2);
         System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data);
 
-
+    }
+    @Test
+    public void secondTest() {
+        System.out.println("Second Test: ");
+        BinaryTree tree2 = new BinaryTree();
+        tree2.root = new Node(1);
+        int n1 = 1, n2 = 1;
+        Node t = tree2.lca(tree2.root, n1, n2);
+        System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data);
+    }
+    @Test
+    public void thirdTest() {
+        System.out.println("Third Test: ");
+        BinaryTree tree3 = new BinaryTree();
+        tree3.root = new Node(1);
+        int n1 = 1, n2 = 1;
+        Node t = tree3.lca(tree3.root, n1, n2);
+        System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data);
     }
 }
