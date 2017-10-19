@@ -1,7 +1,7 @@
 //
 // Name : Liad Elidan, ID : 17316414
 //
-// Software Engineering Development project 1
+// Software Engineering Development Project 1
 //
 class Node
 {
@@ -25,7 +25,10 @@ class BinaryTree
     {
         if (node == null)
             return null;
-
+        if (n1<=0 || n2<=0)
+        {
+            return null;
+        }
         // If both n1 and n2 are smaller than root, then LCA lies in left
         if (node.data > n1 && node.data > n2)
             return lca(node.left, n1, n2);
