@@ -40,10 +40,31 @@ public class FirstTest {
     @Test
     public void thirdTest() {
         System.out.println("Third Test: ");
-        BinaryTree tree3 = new BinaryTree();
-        tree3.root = new Node(1);
-        int n1 = 1, n2 = 1;
-        Node t = tree3.lca(tree3.root, n1, n2);
+        BinaryTree tree = new BinaryTree();
+        tree.root = new Node(1);
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(3);
+        tree.root.left.left = new Node(4);
+        tree.root.left.right = new Node(5);
+        tree.root.left.right.left = new Node(6);
+        tree.root.left.right.right = new Node(7);
+        int n1 = 1, n2 = 2;
+        Node t = tree.lca(tree.root, n1, n2);
+        System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data);
+
+        n1 = 2;
+        n2 = 3;
+        t = tree.lca(tree.root, n1, n2);
+        System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data);
+
+        n1 = 3;
+        n2 = 4;
+        t = tree.lca(tree.root, n1, n2);
+        System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data);
+
+        n1 = 5;
+        n2 = 3;
+        t = tree.lca(tree.root, n1, n2);
         System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data);
     }
 }
