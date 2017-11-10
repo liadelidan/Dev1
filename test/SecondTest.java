@@ -66,8 +66,8 @@ public class SecondTest {
 
         tree5 = new DirectedAcyclicGraph<>();
         e = new ArrayList<>();
-        int AmountNodeDAG_E = 3;
-        for (int i = 0; i <= AmountNodeDAG_E; i++) {
+        int dagSize5 = 3;
+        for (int i = 0; i <= dagSize5; i++) {
             e.add(new Node2<>(i));
         }
 
@@ -208,7 +208,7 @@ public class SecondTest {
     @Test
     //TREE 5
     public void test21() {
-        assertEquals("e2,e3 => e1", e.get(1), tree5.lowestCommonAncestor(e.get(2), e.get(3)));
+        assertEquals("e3,e2 => e1", e.get(1), tree5.lowestCommonAncestor(e.get(3), e.get(2)));
     }
 
 }
