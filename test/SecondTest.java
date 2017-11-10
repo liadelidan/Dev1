@@ -24,22 +24,20 @@ public class SecondTest {
     public static void reset() throws Exception {
         tree1 = new DirectedAcyclicGraph<>();
         a = new ArrayList<>();
-        int AmountNodeDAG_A = 10;
-        for (int i = 0; i <= AmountNodeDAG_A; i++) {
+        int dagSize = 7;
+        for (int i = 0; i <= dagSize; i++) {
             a.add(new Node2<>(i));
         }
 
         tree1.root = a.get(1);
-        a.get(1).addEdge(new Node2[] { a.get(2), a.get(3), a.get(4), a.get(5) });
-        a.get(2).addEdge(new Node2[] { a.get(6), a.get(7), a.get(8) });
-        a.get(3).addEdge(new Node2[] { a.get(6), a.get(8), a.get(9) });
-        a.get(4).addEdge(new Node2[] { a.get(7), a.get(9), a.get(10) });
-        a.get(5).addEdge(new Node2[] { a.get(8), a.get(10) });
+        a.get(1).addEdge(new Node2[] { a.get(2), a.get(3) });
+        a.get(2).addEdge(new Node2[] { a.get(4), a.get(5) });
+        a.get(3).addEdge(new Node2[] { a.get(6), a.get(7)});
 
         tree2 = new DirectedAcyclicGraph<>();
         b = new ArrayList<>();
-        int AmountNodeDAG_B = 7;
-        for (int i = 0; i <= AmountNodeDAG_B; i++) {
+        int dagSize2 = 7;
+        for (int i = 0; i <= dagSize2; i++) {
             b.add(new Node2<>(i));
         }
 
@@ -51,14 +49,14 @@ public class SecondTest {
         b.get(5).addEdge(b.get(6));
         b.get(6).addEdge(b.get(7));
 
-        tree2 = new DirectedAcyclicGraph<>();
+        tree3 = new DirectedAcyclicGraph<>();
         c = new ArrayList<>();
         int AmountNodeDAG_C = 18;
         for (int i = 0; i <= AmountNodeDAG_C; i++) {
             c.add(new Node2<>(i));
         }
 
-        tree2.root = c.get(1);
+        tree3.root = c.get(1);
         c.get(1).addEdge(new Node2[] { c.get(2), c.get(3), c.get(5), c.get(5) });
         c.get(2).addEdge(new Node2[] { c.get(6), c.get(7), c.get(8), c.get(9) });
         c.get(5).addEdge(new Node2[] { c.get(10), c.get(11), c.get(12), c.get(13) });
@@ -107,37 +105,32 @@ public class SecondTest {
 
     @Test
     public void test1() {
-        // null returns null
+        // null test
         assertEquals("null,null => null", null, tree1.lowestCommonAncestor(null, null));
     }
 
     @Test
     public void test2() {
-        // LCA of nodes of which one node is ancestor of the other node
-        assertEquals("a3,a6 => a1", a.get(1), tree1.lowestCommonAncestor(a.get(3), a.get(6)));
+        assertEquals("a5,a6 => a1", a.get(1), tree1.lowestCommonAncestor(a.get(5), a.get(6)));
     }
 
     @Test
     public void test3() {
-        // LCA of nodes which are in different branches with different depth
         assertEquals("a6,a5 => a1", a.get(1), tree1.lowestCommonAncestor(a.get(6), a.get(5)));
     }
 
     @Test
     public void test4() {
-        // LCA of nodes which are in different branches with same depth (highest depth)
-        assertEquals("a6,a10 => a1", a.get(1), tree1.lowestCommonAncestor(a.get(6), a.get(10)));
+        assertEquals("a1,a2 => a1", a.get(1), tree1.lowestCommonAncestor(a.get(1), a.get(2)));
     }
 
     @Test
     public void test5() {
-        // LCA of nodes which have common ancestors on different levels of depths
-        assertEquals("a6,a9 => a3", a.get(3), tree1.lowestCommonAncestor(a.get(6), a.get(9)));
+        assertEquals("a6,a6 => a3", a.get(3), tree1.lowestCommonAncestor(a.get(6), a.get(6)));
     }
 
     @Test
     public void test6() {
-        // LCA of two siblings
         assertEquals("a8,a9 => a3", a.get(3), tree1.lowestCommonAncestor(a.get(8), a.get(9)));
     }
 
@@ -228,7 +221,7 @@ public class SecondTest {
     @Test
     public void test21() {
         // LCA of two siblings
-        assertEquals("e2,e3 => e1", e.get(1), tree4.lowestCommonAncestor(e.get(2), e.get(3)));
+        assertEquals("e2,e3 => e1", e.get(1), tree5.lowestCommonAncestor(e.get(2), e.get(3)));
     }
 
     @Test
@@ -240,7 +233,7 @@ public class SecondTest {
     @Test
     public void test23() {
         // LCA of two successors
-        assertEquals("f3,f4 => f2", f.get(2), tree5.lowestCommonAncestor(f.get(3), f.get(4)));
+        assertEquals("f3,f4 => f2", f.get(2), tree6.lowestCommonAncestor(f.get(3), f.get(4)));
     }
 
     @Test
